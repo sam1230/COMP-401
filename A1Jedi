@@ -1,0 +1,113 @@
+package a1;
+import java.util.Scanner;
+import Java.math;
+public class A1Jedi {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+	
+		
+		
+	
+		
+		
+		int assignmentgrade = scanner.nextInt();
+		int totalPoints = 0;
+		for(int i = 0; i < assignmentgrade; ++i) {
+			totalPoints += scanner.nextInt();
+		}
+		
+		
+		int totalParticipationpoints = scanner.nextInt();
+		
+		int totalStudents = scanner.nextInt();
+		String[] lastName = new String[totalStudents]; 
+		String[] firstName = new String[totalStudents];
+		double[] mGrade = new double[totalStudents];
+		double[] eGrade = new double[totalStudents];
+		
+		for(int u = 0; u < totalStudents; ++u) {
+			firstName[u] = scanner.next();
+			lastName[u] = scanner.next();
+			double pGrade = scanner.nextInt();
+			double totalApoints = 0;
+			for(int i = 0; i < assignmentgrade; ++i) {
+				totalApoints += scanner.nextDouble();
+			}
+			double finalaGrade = 100 * totalApoints / totalPoints;
+			mGrade[u] = scanner.nextDouble();
+			eGrade[u] = scanner.nextDouble();
+		}
+			double avg = 0;
+			for (int x = 0; x < mGrade.length; x++) {
+				avg += mGrade[x];
+			}
+			double totalmGrades = 0;
+			double averageofmGrade;
+			double averageoftotalmGrades;
+			double standardDeviationMid;
+			avg /= mGrade.length;
+			for (int r = 0; r < totalStudents; r++) {
+				averageofmGrade = mGrade[r] - avg;
+				totalmGrades += averageofmGrade * averageofmGrade;
+				averageoftotalmGrades = totalmGrades / totalStudents;
+				standardDeviationMid = Math.sqrt(averageoftotalmGrades);
+			}
+			double avgEGrade = 0;
+			for (int x = 0; x < eGrade.length; x++) {
+				avgEGrade += eGrade[x];
+			}
+		
+			double totaleGrades = 0;
+			double averageofeGrade;
+			double averageoftotaleGrades;
+			double standardDeviationFinal;
+			avgEGrade /= eGrade.length;
+			for (int t = 0; t < totalStudents; t++) {
+				averageofeGrade = mGrade[t] - avgEGrade;
+				totaleGrades += averageofeGrade * averageofeGrade;
+				averageoftotaleGrades = totaleGrades / totalStudents;
+				standardDeviationFinal = Math.sqrt(averageoftotaleGrades);
+			}
+		    double finalPgrade = 100 * pGrade / totalParticipationpoints / 0.8;
+		    if (finalPgrade > 100) 
+				finalPgrade = 100;
+			double assignmentGradePercentage = .40 * finalaGrade;
+			double participationGradePercentage = .15 * finalPgrade;
+			double midTermPercentage = .20 * mGrade;
+			double finalExamPercentage = .25 * eGrade;	
+			
+			
+			double rawScore = assignmentGradePercentage + participationGradePercentage + midTermPercentage + finalExamPercentage;
+			if (rawScore >= 94)
+					System.out.println(firstName.charAt(0)+". " + lastName + " A");
+			if (rawScore >=90 && rawScore < 94)
+				System.out.println(firstName.charAt(0)+". " + lastName + " A-");
+			if (rawScore >=86 && rawScore < 90)
+				System.out.println(firstName.charAt(0)+ ". " + lastName + " B+");
+			if (rawScore >= 83 && rawScore < 86)
+				System.out.println(firstName.charAt(0)+ ". " + lastName + " B");
+			if (rawScore >= 80 && rawScore < 83)
+				System.out.println(firstName.charAt(0)+ ". " + lastName + " B-");
+			if (rawScore >= 76 && rawScore < 80)
+				System.out.println(firstName.charAt(0)+ ". " + lastName + " C+");
+			if (rawScore >= 73 && rawScore < 76)
+				System.out.println(firstName.charAt(0)+ ". " + lastName + " C");
+			if (rawScore >= 70 && rawScore < 73)
+				System.out.println(firstName.charAt(0)+ ". " + lastName + " C-");
+			if (rawScore >= 65 && rawScore < 70)
+				System.out.println(firstName.charAt(0)+ ". " + lastName + " D+");
+			if (rawScore >= 60 && rawScore < 65)
+				System.out.println(firstName.charAt(0)+ ". " + lastName + " D");
+			if (rawScore < 60)
+				System.out.println(firstName.charAt(0)+ ". " + lastName + " F" );
+				}
+		scanner.close();
+	}
+		// Your main program code here.
+		
+	}
+	
+	// Feel free to define addition methods here.
+	// Be sure to declare them as "public static"
+}
