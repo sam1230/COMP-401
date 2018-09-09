@@ -25,7 +25,23 @@ public class A1Jedi {
 		String[] firstName = new String[totalStudents];
 		double[] mGrade = new double[totalStudents];
 		double[] eGrade = new double[totalStudents];
+		double totalmGrades = 0;
+		double averageofmGrade;
+		double averageoftotalmGrades;
+		double standardDeviationm = 0;
+		double pGrade;
+		double totaleGrades = 0;
+		double averageofeGrade;
+		double averageoftotaleGrades;
+		double standardDeviatione = 0;
+		double avg = 0;
+		double mCurvePercentage;
+		double mcurvedScore;
+		double ecurvedScore;
+		double avgEGrade = 0;
+		double = eCurvePercentage;
 		
+		double = finalaGrade;
 		for(int u = 0; u < totalStudents; ++u) {
 			firstName[u] = scanner.next();
 			lastName[u] = scanner.next();
@@ -37,18 +53,83 @@ public class A1Jedi {
 			double finalaGrade = 100 * totalApoints / totalPoints;
 			mGrade[u] = scanner.nextDouble();
 			for(int d = 0; d < totalStudents; ++d) {
-				double normalized = mGrade[d] - avg / standardDeviationm
+				double normalized = mGrade[d] - avg / standardDeviationm;
+				if (normalized >= 2.0)
+						mcurvedScore = 100;
+						
+				if(normalized >= 1.0 && normalized < 2.0)
+					mCurvePercentage = 94;
+					mcurvedScore =  ((((normalized) - (1.0)) /
+		                 (2.0 - (1.0))) *
+			               (100 - 94.0)) + 94.0;
+				if(normalized >= 0.0 && normalized < 1.0)
+					mCurvePercentage = 85;
+					mcurvedScore =  ((((normalized) - (0.0)) /
+		                 (1.0 - (0.0))) *
+			               (94 - 85.0)) + 85.0;
+				if(normalized >= -1.0 && normalized < 0.0)
+					mCurvePercentage = 75;
+					mcurvedScore =  ((((normalized) - (-1.0)) /
+		                 (0.0 - (-1.0))) *
+			               (85.0 - 75.0)) + 75.0;
+
+				if(normalized >= -2.0 && normalized < -1.0)
+					mCurvePercentage = 55;
+					mcurvedScore =  ((((normalized) - (-2.0)) /
+		                 (-1.0 - (-2.0))) *
+			               (75.0 - 55.0)) + 55.0;
+				if(normalized >= -3.0 && normalized < -2.0)
+					mCurvePercentage = 30;
+					mcurvedScore =  ((((normalized) - (-3.0)) /
+		                 (-2.0 - (-3.0))) *
+			               (55.0 - 30.0)) + 30.0;
+				if(normalized <= -4.0)
+					mcurvedScore = 0;
+				
 			}
+			
 			eGrade[u] = scanner.nextDouble();
+			for(int l = 0; l < totalStudents; ++l) {
+				double normalizede = eGrade[l] - avgEGrade / standardDeviatione;
+				if (normalizede >= 2.0)
+						ecurvedScore = 100;
+						
+				if(normalizede >= 1.0 && normalizede < 2.0)
+					eCurvePercentage = 94;
+					ecurvedScore =  ((((normalizede) - (1.0)) /
+		                 (2.0 - (1.0))) *
+			               (100 - 94.0)) + 94.0;
+				if(normalizede >= 0.0 && normalizede < 1.0)
+					eCurvePercentage = 85;
+					ecurvedScore =  ((((normalizede) - (0.0)) /
+		                 (1.0 - (0.0))) *
+			               (94 - 85.0)) + 85.0;
+				if(normalizede >= -1.0 && normalizede < 0.0)
+					eCurvePercentage = 75;
+					ecurvedScore =  ((((normalizede) - (-1.0)) /
+		                 (0.0 - (-1.0))) *
+			               (85.0 - 75.0)) + 75.0;
+
+				if(normalizede >= -2.0 && normalizede < -1.0)
+					eCurvePercentage = 55;
+					ecurvedScore =  ((((normalizede) - (-2.0)) /
+		                 (-1.0 - (-2.0))) *
+			               (75.0 - 55.0)) + 55.0;
+				if(normalizede >= -3.0 && normalizede < -2.0)
+					eCurvePercentage = 30;
+					ecurvedScore =  ((((normalizede) - (-3.0)) /
+		                 (-2.0 - (-3.0))) *
+			               (55.0 - 30.0)) + 30.0;
+				if(normalizede <= -4.0)
+					ecurvedScore = 0;
+				
+			}
 		}
-			double avg = 0;
+			
 			for (int x = 0; x < mGrade.length; x++) {
 				avg += mGrade[x];
 			}
-			double totalmGrades = 0;
-			double averageofmGrade;
-			double averageoftotalmGrades;
-			double standardDeviationm = 0;
+			
 			avg /= mGrade.length;
 			for (int r = 0; r < totalStudents; r++) {
 				averageofmGrade = mGrade[r] - avg;
@@ -56,15 +137,12 @@ public class A1Jedi {
 				averageoftotalmGrades = totalmGrades / totalStudents;
 				standardDeviationm = Math.sqrt(averageoftotalmGrades);
 			}
-			double avgEGrade = 0;
+			//double avgEGrade = 0;
 			for (int x = 0; x < eGrade.length; x++) {
 				avgEGrade += eGrade[x];
 			}
 			avgEGrade /= eGrade.length;
-			double totaleGrades = 0;
-			double averageofeGrade;
-			double averageoftotaleGrades;
-			double standardDeviatione = 0;
+		
 			 for (int p = 0; p < totalStudents; p++) {
 				averageofeGrade = eGrade[p] - avgEGrade;
 				totaleGrades += averageofeGrade * averageofeGrade;
@@ -77,34 +155,11 @@ public class A1Jedi {
 				finalPgrade = 100;
 			double assignmentGradePercentage = .40 * finalaGrade;
 			double participationGradePercentage = .15 * finalPgrade;
-			double midTermPercentage = .20 * mGrade;
-			double finalExamPercentage = .25 * eGrade;	
+			double midTermPercentage = .20 * mcurvedScore;
+			double finalExamPercentage = .25 * ecurvedScore;	
 			
 			
-			double rawScore = assignmentGradePercentage + participationGradePercentage + midTermPercentage + finalExamPercentage;
-			if (rawScore >= 94)
-					System.out.println(firstName.charAt(0)+". " + lastName + " A");
-			if (rawScore >=90 && rawScore < 94)
-				System.out.println(firstName.charAt(0)+". " + lastName + " A-");
-			if (rawScore >=86 && rawScore < 90)
-				System.out.println(firstName.charAt(0)+ ". " + lastName + " B+");
-			if (rawScore >= 83 && rawScore < 86)
-				System.out.println(firstName.charAt(0)+ ". " + lastName + " B");
-			if (rawScore >= 80 && rawScore < 83)
-				System.out.println(firstName.charAt(0)+ ". " + lastName + " B-");
-			if (rawScore >= 76 && rawScore < 80)
-				System.out.println(firstName.charAt(0)+ ". " + lastName + " C+");
-			if (rawScore >= 73 && rawScore < 76)
-				System.out.println(firstName.charAt(0)+ ". " + lastName + " C");
-			if (rawScore >= 70 && rawScore < 73)
-				System.out.println(firstName.charAt(0)+ ". " + lastName + " C-");
-			if (rawScore >= 65 && rawScore < 70)
-				System.out.println(firstName.charAt(0)+ ". " + lastName + " D+");
-			if (rawScore >= 60 && rawScore < 65)
-				System.out.println(firstName.charAt(0)+ ". " + lastName + " D");
-			if (rawScore < 60)
-				System.out.println(firstName.charAt(0)+ ". " + lastName + " F" );
-				}
+			
 		scanner.close();
 	}
 		// Your main program code here.
@@ -114,7 +169,7 @@ public class A1Jedi {
 	// Feel free to define addition methods here.
 	// Be sure to declare them as "public static"
 }
-	
+
 		
 		
 	
