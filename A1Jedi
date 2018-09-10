@@ -1,179 +1,256 @@
 package a1;
 import java.util.Scanner;
-import Java.math;
 public class A1Jedi {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 	
 		
-		
-	
-		
-		
-		int assignmentgrade = scanner.nextInt();
-		int totalPoints = 0;
-		for(int i = 0; i < assignmentgrade; ++i) {
-			totalPoints += scanner.nextInt();
-		}
-		
-		
-		int totalParticipationpoints = scanner.nextInt();
-		
-		int totalStudents = scanner.nextInt();
-		String[] lastName = new String[totalStudents]; 
-		String[] firstName = new String[totalStudents];
-		double[] mGrade = new double[totalStudents];
-		double[] eGrade = new double[totalStudents];
 		double totalmGrades = 0;
 		double averageofmGrade;
 		double averageoftotalmGrades;
 		double standardDeviationm = 0;
-		double pGrade;
+		double totalApoints = 0;
 		double totaleGrades = 0;
 		double averageofeGrade;
 		double averageoftotaleGrades;
 		double standardDeviatione = 0;
 		double avg = 0;
 		double mCurvePercentage;
-		double mcurvedScore;
-		double ecurvedScore;
+		double mcurvedScore = 0;
+		double ecurvedScore = 0;
 		double avgEGrade = 0;
-		double = eCurvePercentage;
+		double eCurvePercentage;
+		double finalPgrade = 0;
 		
-		double = finalaGrade;
+		String[] letters = new String[11];
+		letters[0] = "A";
+		letters[1] = "A-";
+		letters[2] = "B+";
+		letters[3] = "B";
+		letters[4] = "B-";
+		letters[5] = "C+";
+		letters[6] = "C";
+		letters[7] = "C-";
+		letters[8] = "D+";
+		letters[9] = "D";
+		letters[10] = "F";
+		
+				
+		
+		
+
+		int assignments = scanner.nextInt();
+		int totalPoints = 0;
+		for(int i = 0; i < assignments; i++) {
+			totalPoints += scanner.nextInt();
+		}
+		
+		int totalParticipationpoints = scanner.nextInt();
+		
+		int totalStudents = scanner.nextInt();
+		String[] lastName = new String[totalStudents]; 
+		String[] firstName = new String[totalStudents];
+		double[] pGrade = new double[totalStudents];
+		double[] eGrade = new double[totalStudents];
+		int[] grades = new int[11];
+		double[] mGrade = new double[totalStudents];
+		double[] finalaGrade = new double[totalStudents];
+		double[] finalScore = new double[totalStudents];
 		for(int u = 0; u < totalStudents; ++u) {
+			totalApoints = 0;
 			firstName[u] = scanner.next();
 			lastName[u] = scanner.next();
-			double pGrade = scanner.nextInt();
-			double totalApoints = 0;
-			for(int i = 0; i < assignmentgrade; ++i) {
+			pGrade[u] = scanner.nextInt();
+			
+			
+			for(int i = 0; i < assignments; ++i) {
 				totalApoints += scanner.nextDouble();
 			}
-			double finalaGrade = 100 * totalApoints / totalPoints;
+			finalaGrade[u] = 100 * totalApoints / totalPoints;
 			mGrade[u] = scanner.nextDouble();
-			for(int d = 0; d < totalStudents; ++d) {
-				double normalized = mGrade[d] - avg / standardDeviationm;
-				if (normalized >= 2.0)
-						mcurvedScore = 100;
-						
-				if(normalized >= 1.0 && normalized < 2.0)
-					mCurvePercentage = 94;
-					mcurvedScore =  ((((normalized) - (1.0)) /
-		                 (2.0 - (1.0))) *
-			               (100 - 94.0)) + 94.0;
-				if(normalized >= 0.0 && normalized < 1.0)
-					mCurvePercentage = 85;
-					mcurvedScore =  ((((normalized) - (0.0)) /
-		                 (1.0 - (0.0))) *
-			               (94 - 85.0)) + 85.0;
-				if(normalized >= -1.0 && normalized < 0.0)
-					mCurvePercentage = 75;
-					mcurvedScore =  ((((normalized) - (-1.0)) /
-		                 (0.0 - (-1.0))) *
-			               (85.0 - 75.0)) + 75.0;
-
-				if(normalized >= -2.0 && normalized < -1.0)
-					mCurvePercentage = 55;
-					mcurvedScore =  ((((normalized) - (-2.0)) /
-		                 (-1.0 - (-2.0))) *
-			               (75.0 - 55.0)) + 55.0;
-				if(normalized >= -3.0 && normalized < -2.0)
-					mCurvePercentage = 30;
-					mcurvedScore =  ((((normalized) - (-3.0)) /
-		                 (-2.0 - (-3.0))) *
-			               (55.0 - 30.0)) + 30.0;
-				if(normalized <= -4.0)
-					mcurvedScore = 0;
-				
-			}
-			
+			avg += mGrade[u];
 			eGrade[u] = scanner.nextDouble();
-			for(int l = 0; l < totalStudents; ++l) {
-				double normalizede = eGrade[l] - avgEGrade / standardDeviatione;
-				if (normalizede >= 2.0)
-						ecurvedScore = 100;
-						
-				if(normalizede >= 1.0 && normalizede < 2.0)
-					eCurvePercentage = 94;
-					ecurvedScore =  ((((normalizede) - (1.0)) /
-		                 (2.0 - (1.0))) *
-			               (100 - 94.0)) + 94.0;
-				if(normalizede >= 0.0 && normalizede < 1.0)
-					eCurvePercentage = 85;
-					ecurvedScore =  ((((normalizede) - (0.0)) /
-		                 (1.0 - (0.0))) *
-			               (94 - 85.0)) + 85.0;
-				if(normalizede >= -1.0 && normalizede < 0.0)
-					eCurvePercentage = 75;
-					ecurvedScore =  ((((normalizede) - (-1.0)) /
-		                 (0.0 - (-1.0))) *
-			               (85.0 - 75.0)) + 75.0;
+			avgEGrade += eGrade[u];
+			
 
-				if(normalizede >= -2.0 && normalizede < -1.0)
-					eCurvePercentage = 55;
-					ecurvedScore =  ((((normalizede) - (-2.0)) /
-		                 (-1.0 - (-2.0))) *
-			               (75.0 - 55.0)) + 55.0;
-				if(normalizede >= -3.0 && normalizede < -2.0)
-					eCurvePercentage = 30;
-					ecurvedScore =  ((((normalizede) - (-3.0)) /
-		                 (-2.0 - (-3.0))) *
-			               (55.0 - 30.0)) + 30.0;
-				if(normalizede <= -4.0)
-					ecurvedScore = 0;
+		}
+		for (int i = 0; i < totalStudents; i++) {
+			
+		}
+		
+		avg /= mGrade.length;
+		avgEGrade /= eGrade.length;
+		
+		double sumofM = 0;
+		double sumofE = 0;
+		for(int i = 0; i < totalStudents; ++i) {
+			sumofM += Math.pow(mGrade[i] - avg, 2);
+			sumofE += Math.pow(eGrade[i] - avgEGrade, 2);
+		}
+		
+		sumofM /= totalStudents;
+		sumofE /= totalStudents;
+		standardDeviationm = Math.sqrt(sumofM);
+		standardDeviatione = Math.sqrt(sumofE);
+		
+		double normalized = 0;
+		double normalizede = 0;
+		for (int i = 0; i < totalStudents; i++) {
+			normalized = ((mGrade[i] - avg) / standardDeviationm);
+			normalizede = ((eGrade[i] - avgEGrade) / standardDeviatione);
+			
+		
+			if (normalized >= 2.0)
+				mcurvedScore = 100;
 				
-			}
+		if(normalized >= 1.0 && normalized < 2.0) {
+			mCurvePercentage = 94;
+			mcurvedScore =  ((((normalized) - (1.0)) /
+	             (2.0 - (1.0))) *
+	               (100 - 94.0)) + 94.0;
+		}
+		if(normalized >= 0.0 && normalized < 1.0) {
+			mCurvePercentage = 85;
+			mcurvedScore =  ((((normalized) - (0.0)) /
+	             (1.0 - (0.0))) *
+	               (94 - 85.0)) + 85.0;
+		}
+		if(normalized >= -1.0 && normalized < 0.0) {
+			mCurvePercentage = 75;
+			mcurvedScore =  ((((normalized) - (-1.0)) /
+	             (0.0 - (-1.0))) *
+	               (85.0 - 75.0)) + 75.0;
+		}
+		if(normalized >= -2.0 && normalized < -1.0) {
+			mCurvePercentage = 55;
+			mcurvedScore =  ((((normalized) - (-2.0)) /
+	             (-1.0 - (-2.0))) *
+	               (75.0 - 55.0)) + 55.0;
+		}
+		if(normalized >= -3.0 && normalized < -2.0) {
+			mCurvePercentage = 30;
+			mcurvedScore =  ((((normalized) - (-3.0)) /
+	             (-2.0 - (-3.0))) *
+	               (55.0 - 30.0)) + 30.0;
+		}
+		if(normalized <= -4.0) {
+			mcurvedScore = 0;
 		}
 			
-			for (int x = 0; x < mGrade.length; x++) {
-				avg += mGrade[x];
-			}
-			
-			avg /= mGrade.length;
-			for (int r = 0; r < totalStudents; r++) {
-				averageofmGrade = mGrade[r] - avg;
-				totalmGrades += averageofmGrade * averageofmGrade;
-				averageoftotalmGrades = totalmGrades / totalStudents;
-				standardDeviationm = Math.sqrt(averageoftotalmGrades);
-			}
-			//double avgEGrade = 0;
-			for (int x = 0; x < eGrade.length; x++) {
-				avgEGrade += eGrade[x];
-			}
-			avgEGrade /= eGrade.length;
 		
-			 for (int p = 0; p < totalStudents; p++) {
-				averageofeGrade = eGrade[p] - avgEGrade;
-				totaleGrades += averageofeGrade * averageofeGrade;
-				averageoftotaleGrades = totaleGrades / totalStudents;
-				standardDeviatione = Math.sqrt(averageoftotaleGrades);
-				}
-			 
-		    double finalPgrade = 100 * pGrade / totalParticipationpoints / 0.8;
-		    if (finalPgrade > 100) 
-				finalPgrade = 100;
-			double assignmentGradePercentage = .40 * finalaGrade;
-			double participationGradePercentage = .15 * finalPgrade;
-			double midTermPercentage = .20 * mcurvedScore;
-			double finalExamPercentage = .25 * ecurvedScore;	
-			
-			
-			
-		scanner.close();
+			if (normalizede >= 2.0) {
+					ecurvedScore = 100;
 	}
-		// Your main program code here.
+			if(normalizede >= 1.0 && normalizede < 2.0) {
+				
+				ecurvedScore =  ((((normalizede) - (1.0)) /
+	                 (2.0 - (1.0))) *
+		               (100 - 94.0)) + 94.0;
+			}
+			if(normalizede >= 0.0 && normalizede < 1.0) {
+				
+				ecurvedScore =  ((((normalizede) - (0.0)) /
+	                 (1.0 - (0.0))) *
+		               (94 - 85.0)) + 85.0;
+			}
+			if(normalizede >= -1.0 && normalizede < 0.0) {
+				
+				ecurvedScore =  ((((normalizede) - (-1.0)) /
+	                 (0.0 - (-1.0))) *
+		               (85.0 - 75.0)) + 75.0;
+			}
+
+			if(normalizede >= -2.0 && normalizede < -1.0) {
+				
+				ecurvedScore =  ((((normalizede) - (-2.0)) /
+	                 (-1.0 - (-2.0))) *
+		               (75.0 - 55.0)) + 55.0;
+			}
+			if(normalizede >= -3.0 && normalizede < -2.0) {
+			
+				ecurvedScore =  ((((normalizede) - (-3.0)) /
+	                 (-2.0 - (-3.0))) *
+		               (55.0 - 30.0)) + 30.0;
+			}
+			if(normalizede <= -4.0) {
+				ecurvedScore = 0;
+		}
 		
-	}
+							
+			 finalPgrade = 100 * pGrade[i] / totalParticipationpoints / 0.8;
+						 if (finalPgrade > 100) {
+			 finalPgrade = 100;
+		 }
+
+		double assignmentGradePercentage = .40 * finalaGrade[i];
+		double participationGradePercentage = .15 * finalPgrade;
+		double midTermPercentage = .20 * mcurvedScore;
+		double finalExamPercentage = .25 * ecurvedScore;	
 	
-	// Feel free to define addition methods here.
-	// Be sure to declare them as "public static"
+		finalScore[i] = (assignmentGradePercentage + participationGradePercentage + midTermPercentage + finalExamPercentage);
+	
+
+
+			
+		
+			
+
+if (finalScore[i] >= 94) {
+	grades[0]+=1;
 }
+if (finalScore[i] >=90 && finalScore[i] <94) {
+	grades[1]+=1;	
+}
+if (finalScore[i] >=86 && finalScore[i] < 90) {
+	grades[2]+=1;
+}
+if (finalScore[i] >= 83 && finalScore[i] < 86) {
+	grades[3]+=1;
+}
+if (finalScore[i] >= 80 && finalScore[i] < 83) {
+	grades[4]+=1;
+}	
+if (finalScore[i] >= 76 && finalScore[i] < 80) {
+	grades[5]+=1;
+}
+if (finalScore[i] >= 73 && finalScore[i] < 76) {
+	grades[6]+=1;
+}
+if (finalScore[i] >= 70 && finalScore[i] < 73) {
+	grades[7]+=1;
+}		
+if (finalScore[i] >= 65 && finalScore[i] < 70) {
+	grades[8]+=1;
+}
+if (finalScore[i] >= 60 && finalScore[i] < 65) {
+	grades[9]+=1;
+}
+if (finalScore[i] < 60) {
+	grades[10]+=1;
+}
+		}
+for (int i = 0; i < 11; i++ ) {
+	if (i == 0 || i == 3 || i == 6 || i == 9 || i == 10) {
+		System.out.println(letters[i]+ " : " + grades[i]);
+	} else {
+		System.out.println(letters[i] + ": " + grades[i]);
+		
+	}
+
+}
+		scanner.close();
 
 		
-		
+	}
+}
+
+		// Your main program code here.
 	
-		
-		
-		
-			
+	
+	
+
+
+	// Feel free to define addition methods here.
+	// Be sure to declare them as "public static"
+
